@@ -719,10 +719,11 @@
             <h2 class="section-title">Свяжитесь с нами</h2>
             <div class="contacts-grid">
                 <div class="contact-form">
-                    <form onsubmit="alert('Заявка отправлена!'); return false;">
-                        <input type="text" placeholder="Ваше имя" required>
-                        <input type="tel" placeholder="Телефон" required>
-                        <textarea rows="4" placeholder="Комментарий (необязательно)"></textarea>
+                    <!-- Форма с отправкой в Telegram -->
+                    <form id="lead-form">
+                        <input type="text" id="name" placeholder="Ваше имя" required>
+                        <input type="tel" id="phone" placeholder="Телефон" required>
+                        <textarea id="message" rows="4" placeholder="Комментарий (необязательно)"></textarea>
                         <button type="submit" class="btn btn-accent">Отправить заявку</button>
                     </form>
                 </div>
@@ -853,6 +854,41 @@
             el.style.transform = 'translateY(20px)';
             el.style.transition = '0.6s ease';
             observer.observe(el);
+        });
+
+        // Отправка формы в Telegram
+        document.getElementById('lead-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !phone) {
+                alert('Пожалуйста, заполните имя и телефон.');
+                return;
+            }
+
+            const token = '8809336438:AAG3CdkE-NXMaiqH_45sSkemcGpbU3CDQZc';
+            const chat_id = '801829681';
+            const text = `📩 *Новая заявка с сайта СуперГруз*%0A%0A👤 *Имя:* ${name}%0A📞 *Телефон:* ${phone}%0A💬 *Комментарий:* ${message || 'нет'}`;
+            
+            const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${text}&parse_mode=Markdown`;
+
+            try {
+                const response = await fetch(url);
+                if (response.ok) {
+                    alert('Спасибо! Заявка отправлена. Мы скоро свяжемся с вами.');
+                    this.reset();
+                } else {
+                    const err = await response.json();
+                    console.error('Ошибка Telegram:', err);
+                    alert('Не удалось отправить заявку. Пожалуйста, позвоните нам: 8 908 433-10-11');
+                }
+            } catch (error) {
+                console.error('Ошибка сети:', error);
+                alert('Ошибка соединения. Позвоните нам: 8 908 433-10-11');
+            }
         });
     </script>
 </body>

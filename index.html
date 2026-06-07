@@ -185,7 +185,7 @@
                     <a href="#calc" class="btn btn-accent btn-large">Рассчитать стоимость</a>
                 </div>
                 <div class="hero-image">
-                    <img src="14-sentyabrya-ng070021.jpg" alt="Грузчики в Ульяновске">
+                    <img src="moving-essentials.jpeg" alt="Грузчики в Ульяновске">
                 </div>
             </div>
         </div>
@@ -415,7 +415,6 @@
 
             const rate = 600;
             let serviceFee = 0;
-            // Сервисный сбор только если есть грузчики
             if (workers > 0) {
                 if (service === 'moving') serviceFee = 500;
                 else if (service === 'trash') serviceFee = 300;
@@ -439,7 +438,6 @@
             document.getElementById('totalPrice').innerText = total.toLocaleString() + ' ₽';
         }
 
-        // Таймер скидки
         function updateTimer() {
             const now = new Date();
             const end = new Date(now);

@@ -185,7 +185,7 @@
                     <a href="#calc" class="btn btn-accent btn-large">Рассчитать стоимость</a>
                 </div>
                 <div class="hero-image">
-                    <img src="scale_1200.jpeg" alt="Грузчики в Ульяновске">
+                    <img src="14-sentyabrya-ng070021.jpg" alt="Грузчики в Ульяновске">
                 </div>
             </div>
         </div>
@@ -211,9 +211,18 @@
                 <div class="calc-grid">
                     <div class="calc-form">
                         <div class="form-group"><label>Тип услуги</label><select id="serviceType"><option value="loaders">Грузчики</option><option value="moving">Переезд</option><option value="transport">Грузоперевозка</option><option value="trash">Вывоз мусора</option></select></div>
-                        <div class="form-group"><label>Количество грузчиков</label><input type="range" id="workers" min="1" max="6" value="2" oninput="document.getElementById('workersVal').innerText = this.value"><span class="range-value" id="workersVal">2</span></div>
+                        <div class="form-group">
+                            <label>Количество грузчиков</label>
+                            <input type="range" id="workers" min="1" max="6" value="2" oninput="document.getElementById('workersVal').innerText = this.value">
+                            <span class="range-value" id="workersVal">2</span>
+                        </div>
                         <div class="form-group"><label>Время работы (минимально 2 часа)</label><input type="range" id="hours" min="2" max="12" step="0.5" value="2" oninput="document.getElementById('hoursVal').innerText = this.value + ' ч'"><span class="range-value" id="hoursVal">2 ч</span></div>
-                        <div class="form-group"><label>Транспорт</label><select id="transport"><option value="none">Без транспорта</option><option value="gazelle3">Газель 3 метра (1 000 ₽/час)</option><option value="gazelle4">Газель 4 метра (1 200 ₽/час)</option><option value="gazelle5">Газель 5 метров (1 500 ₽/час)</option><option value="gazelle6">Газель 6 метров (1 800 ₽/час)</option></select></div>
+                        <div class="form-group">
+                            <label>Транспорт</label>
+                            <select id="transport">
+                                <!-- Опции заполняются динамически через JS -->
+                            </select>
+                        </div>
                         <div class="form-group"><label>Этаж</label><input type="number" id="floor" value="1" min="1" max="30"></div>
                         <div class="checkbox-group"><input type="checkbox" id="lift"><label for="lift">Есть грузовой лифт</label></div>
                     </div>
@@ -261,20 +270,12 @@
         <div class="container">
             <h2 class="section-title">Наши работы</h2>
             <div class="portfolio-slider">
-                <div class="slide"><img src="diploma-2 копия.jpg" alt="Фото 1"></div>
-                <div class="slide"><img src="AISelect_20260509_224812.jpg" alt="Фото 2"></div>
-                <div class="slide"><img src="AISelect_20260509_134228(1).jpg" alt="Фото 3"></div>
-                <div class="slide"><img src="Сниукукеукееукеемок.png" alt="Фото 4"></div>
+                <div class="slide"><img src="AISelect_20260509_224812.jpg" alt="Фото 1"></div>
+                <div class="slide"><img src="IMG_4537.JPG" alt="Фото 2"></div>
+                <div class="slide"><img src="Сниукукеукееукеемок.png" alt="Фото 3"></div>
+                <div class="slide"><img src="IMG_4532.JPG" alt="Фото 4"></div>
                 <div class="slide"><img src="Снукеукеимокbhbh копия.png" alt="Фото 5"></div>
-                <!-- Фото 6 удалено -->
-                <div class="slide"><img src="ADED7F7D-0521-48A4-9C01-77D6FD7E3EDC.jpeg" alt="Фото 7"></div>
-                <div class="slide"><img src="IMG_4516.JPG" alt="Фото 8"></div>
-                <div class="slide"><img src="IMG_4527.JPG" alt="Фото 9"></div>
-                <div class="slide"><img src="IMG_4532.JPG" alt="Фото 10"></div>
-                <div class="slide"><img src="IMG_4537.JPG" alt="Фото 11"></div>
-                <!-- Фото 12 удалено -->
-                <div class="slide"><img src="avito-image (1).webp" alt="Фото 13"></div>
-                <!-- Фото 14 удалено -->
+                <div class="slide"><img src="ADED7F7D-0521-48A4-9C01-77D6FD7E3EDC.jpeg" alt="Фото 6"></div>
             </div>
         </div>
     </section>
@@ -333,36 +334,112 @@
             'gazelle6': 1800
         };
 
+        const trashTransportPrices = {
+            'none': 0,
+            'gazelle_trash': 4000,
+            'zil': 7500,
+            'kamaz': 10500
+        };
+
+        const transportSelect = document.getElementById('transport');
+        const serviceTypeSelect = document.getElementById('serviceType');
+        const workersInput = document.getElementById('workers');
+        const workersVal = document.getElementById('workersVal');
+
+        function addOption(value, text) {
+            const option = document.createElement('option');
+            option.value = value;
+            option.textContent = text;
+            transportSelect.appendChild(option);
+        }
+
+        function updateTransportOptions() {
+            const service = serviceTypeSelect.value;
+            transportSelect.innerHTML = ''; 
+            if (service === 'trash') {
+                addOption('none', 'Без транспорта');
+                addOption('gazelle_trash', 'Газель (4 000 ₽)');
+                addOption('zil', 'ЗИЛ (7 500 ₽)');
+                addOption('kamaz', 'Камаз (10 500 ₽)');
+            } else {
+                addOption('none', 'Без транспорта');
+                addOption('gazelle3', 'Газель 3 метра (1 000 ₽/час)');
+                addOption('gazelle4', 'Газель 4 метра (1 200 ₽/час)');
+                addOption('gazelle5', 'Газель 5 метров (1 500 ₽/час)');
+                addOption('gazelle6', 'Газель 6 метров (1 800 ₽/час)');
+            }
+        }
+
+        function updateWorkersRange() {
+            const service = serviceTypeSelect.value;
+            if (service === 'loaders') {
+                workersInput.min = 1;
+                workersInput.max = 6;
+                if (parseInt(workersInput.value) < 1) workersInput.value = 1;
+            } else {
+                workersInput.min = 0;
+                workersInput.max = 6;
+                if (parseInt(workersInput.value) < 0) workersInput.value = 0;
+            }
+            workersVal.innerText = workersInput.value;
+            calculate();
+        }
+
+        serviceTypeSelect.addEventListener('change', function() {
+            updateTransportOptions();
+            updateWorkersRange();
+        });
+
+        updateTransportOptions();
+        updateWorkersRange();
+
+        document.querySelectorAll('#calc select, #calc input').forEach(el => {
+            el.addEventListener('input', function() {
+                if (el.id === 'workers') {
+                    workersVal.innerText = el.value;
+                }
+                if (el.id === 'hours') {
+                    document.getElementById('hoursVal').innerText = el.value + ' ч';
+                }
+                calculate();
+            });
+        });
+
         function calculate() {
-            const service = document.getElementById('serviceType').value;
-            const workers = parseInt(document.getElementById('workers').value);
+            const service = serviceTypeSelect.value;
+            const workers = parseInt(workersInput.value);
             const hours = parseFloat(document.getElementById('hours').value);
-            const transport = document.getElementById('transport').value;
+            const transport = transportSelect.value;
             const floor = parseInt(document.getElementById('floor').value);
             const lift = document.getElementById('lift').checked;
 
             const rate = 600;
             let serviceFee = 0;
-            if (service === 'moving') serviceFee = 500;
-            else if (service === 'trash') serviceFee = 300;
-            else if (service === 'transport') serviceFee = 200;
+            // Сервисный сбор только если есть грузчики
+            if (workers > 0) {
+                if (service === 'moving') serviceFee = 500;
+                else if (service === 'trash') serviceFee = 300;
+                else if (service === 'transport') serviceFee = 200;
+            }
 
-            const transportFee = transportPrices[transport] * hours;
+            let transportFee = 0;
+            if (service === 'trash') {
+                transportFee = trashTransportPrices[transport] || 0;
+            } else {
+                transportFee = (transportPrices[transport] || 0) * hours;
+            }
 
             let floorFee = 0;
-            if (floor > 1 && !lift) {
+            if (floor > 1 && !lift && workers > 0) {
                 floorFee = (floor - 1) * 100 * workers;
             }
 
-            const total = (workers * rate * hours) + serviceFee + transportFee + floorFee;
+            const workersCost = workers > 0 ? workers * rate * hours : 0;
+            const total = workersCost + serviceFee + transportFee + floorFee;
             document.getElementById('totalPrice').innerText = total.toLocaleString() + ' ₽';
         }
 
-        document.querySelectorAll('#calc select, #calc input').forEach(el => {
-            el.addEventListener('input', calculate);
-        });
-        calculate();
-
+        // Таймер скидки
         function updateTimer() {
             const now = new Date();
             const end = new Date(now);

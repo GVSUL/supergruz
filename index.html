@@ -55,7 +55,31 @@
         }
         .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(11,29,58,0.85) 0%, rgba(11,29,58,0.4) 100%); }
         .hero .container { position: relative; z-index: 1; }
-        .hero-content { max-width: 650px; }
+        .hero-content { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            gap: 40px; 
+            flex-wrap: wrap; 
+        }
+        .hero-text { flex: 1 1 500px; }
+        .hero-image { 
+            flex: 0 0 auto; 
+            width: 400px; 
+            max-width: 100%; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3); 
+            animation: float 6s ease-in-out infinite; 
+        }
+        .hero-image img { width: 100%; height: auto; display: block; }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
         .hero h1 { font-size: 3.5rem; color: var(--white); margin-bottom: 20px; }
         .hero p { font-size: 1.25rem; margin-bottom: 30px; opacity: 0.9; }
         .discount-badge { background: var(--accent); padding: 10px 20px; border-radius: 30px; font-weight: 700; display: inline-block; margin-bottom: 20px; animation: pulse 2s infinite; }
@@ -133,6 +157,8 @@
             .header-phone { font-size: 1.1rem; }
             .header-max { font-size: 1rem; padding: 6px 12px; }
             .btn { padding: 10px 20px; font-size: 0.9rem; }
+            .hero-content { flex-direction: column; text-align: center; }
+            .hero-image { width: 280px; margin: 20px auto 0; }
         }
     </style>
 </head>
@@ -152,10 +178,15 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="discount-badge">🎉 Скидка 10% на первый заказ до <span id="timer">00:00:00</span></div>
-                <h1>Грузчики, переезды и вывоз мусора в Ульяновске</h1>
-                <p>Выезд за 30 минут. Фиксированная цена без скрытых платежей. Работаем с 8:00 до 22:00 без выходных.</p>
-                <a href="#calc" class="btn btn-accent btn-large">Рассчитать стоимость</a>
+                <div class="hero-text">
+                    <div class="discount-badge">🎉 Скидка 10% на первый заказ до <span id="timer">00:00:00</span></div>
+                    <h1>Грузчики, переезды и вывоз мусора в Ульяновске</h1>
+                    <p>Выезд за 30 минут. Фиксированная цена без скрытых платежей. Работаем с 8:00 до 22:00 без выходных.</p>
+                    <a href="#calc" class="btn btn-accent btn-large">Рассчитать стоимость</a>
+                </div>
+                <div class="hero-image">
+                    <img src="scale_1200.jpeg" alt="Грузчики в Ульяновске">
+                </div>
             </div>
         </div>
     </section>
@@ -230,15 +261,20 @@
         <div class="container">
             <h2 class="section-title">Наши работы</h2>
             <div class="portfolio-slider">
-                <div class="slide"><img src="UPoRvLasbnaln-qpnopopRqlUQui.jpeg" alt="Фото 1"></div>
-                <div class="slide"><img src="ADED7F7D-0521-48A4-9C01-77D6FD7E3EDC.jpeg" alt="Фото 2"></div>
-                <div class="slide"><img src="IMG_4516.JPG" alt="Фото 3"></div>
-                <div class="slide"><img src="IMG_4527.JPG" alt="Фото 4"></div>
-                <div class="slide"><img src="IMG_4532.JPG" alt="Фото 5"></div>
-                <div class="slide"><img src="IMG_4537.JPG" alt="Фото 6"></div>
-                <div class="slide"><img src="Изображение WhatsApp 2025-06-12 в 13.30.15.jpeg" alt="Фото 7"></div>
-                <div class="slide"><img src="avito-image (1).webp" alt="Фото 8"></div>
-                <div class="slide"><img src="диплом-2 копия.jpg" alt="Фото 9"></div>
+                <div class="slide"><img src="diploma-2 копия.jpg" alt="Фото 1"></div>
+                <div class="slide"><img src="AISelect_20260509_224812.jpg" alt="Фото 2"></div>
+                <div class="slide"><img src="AISelect_20260509_134228(1).jpg" alt="Фото 3"></div>
+                <div class="slide"><img src="Сниукукеукееукеемок.png" alt="Фото 4"></div>
+                <div class="slide"><img src="Снукеукеимокbhbh копия.png" alt="Фото 5"></div>
+                <div class="slide"><img src="UPoRvLasbnaln-qpnopopRqlUQui.jpeg" alt="Фото 6"></div>
+                <div class="slide"><img src="ADED7F7D-0521-48A4-9C01-77D6FD7E3EDC.jpeg" alt="Фото 7"></div>
+                <div class="slide"><img src="IMG_4516.JPG" alt="Фото 8"></div>
+                <div class="slide"><img src="IMG_4527.JPG" alt="Фото 9"></div>
+                <div class="slide"><img src="IMG_4532.JPG" alt="Фото 10"></div>
+                <div class="slide"><img src="IMG_4537.JPG" alt="Фото 11"></div>
+                <div class="slide"><img src="Изображение WhatsApp 2025-06-12 в 13.30.15.jpeg" alt="Фото 12"></div>
+                <div class="slide"><img src="avito-image (1).webp" alt="Фото 13"></div>
+                <div class="slide"><img src="диплом-2 копия.jpg" alt="Фото 14"></div>
             </div>
         </div>
     </section>
@@ -247,56 +283,16 @@
         <div class="container">
             <h2 class="section-title">Отзывы клиентов</h2>
             <div class="review-cards">
-                <div class="review">
-                    <div class="stars">★★★★★</div>
-                    <p>«Сервис на высшем уровне, аккуратно, быстро, приехали вовремя и даже чуть раньше, однозначно пять заслуженных звёзд, рекомендую!»</p>
-                    <strong>Катя, переезд</strong>
-                </div>
-                <div class="review">
-                    <div class="stars">★★★★★</div>
-                    <p>«Хочу поблагодарить за погрузку машины при переезде! Звонила за 2 дня до дня погрузки, переживала, что не найду грузчиков. Очень вежливо со мной поговорили по телефону, заверили, что к назначенному времени команда будет! Всё очень оперативно! Парни пришли вовремя, аккуратные, вежливые, загрузили машину очень быстро и аккуратно, все вещи доехали в другой город целыми. Большое спасибо! Буду рекомендовать вашу компанию всем в Ульяновске!»</p>
-                    <strong>Евгения, грузчики</strong>
-                </div>
-                <div class="review">
-                    <div class="stars">★★★★★</div>
-                    <p>«Спасибо за качественный перевоз мебели! Отличные ребята - быстрые, вежливые, исполнительные! Всё вовремя!»</p>
-                    <strong>Алена, переезд</strong>
-                </div>
-                <div class="review">
-                    <div class="stars">★★★★★</div>
-                    <p>«Транспорт нам был нужен в кратчайшие сроки. Сразу договорились с водителем о времени. Водитель прибыл на место вовремя. Газель хорошая, вместительная. Абсолютно никаких претензий нет, большое вам спасибо.»</p>
-                    <strong>Роман, перевозка мебели</strong>
-                </div>
-                <div class="review">
-                    <div class="stars">★★★★★</div>
-                    <p>«Быстро договорились, пунктуальные ребята, отлично и быстро справились с работой, молодцы! Большое спасибо! Рекомендую 👍»</p>
-                    <strong>Николай, грузчики</strong>
-                </div>
-                <div class="review">
-                    <div class="stars">★★★★★</div>
-                    <p>«Очень качественно выполнена работа. Ребята просто молодцы. Подъехали точно по времени. Работали быстро, аккуратно. Вся мебель поместилась в одну машину. Будем рекомендовать всем знакомым»</p>
-                    <strong>Александр, грузчики</strong>
-                </div>
-                <div class="review">
-                    <div class="stars">★★★★★</div>
-                    <p>«Работа выполнена быстро и качественно! Договорились максимально быстро, все договоренности соблюдены!»</p>
-                    <strong>Юлия, переезд</strong>
-                </div>
-                <div class="review">
-                    <div class="stars">★★★★★</div>
-                    <p>«Спасибо. Нам понравилось. Мы остались довольны. Всё быстро аккуратно. Написала, сразу ответили, договорились, приехали даже чуть раньше, хорошо и быстро работали. В общем всё чётко. Буду обращаться еще!»</p>
-                    <strong>Юрий, грузчики</strong>
-                </div>
-                <div class="review">
-                    <div class="stars">★★★★★</div>
-                    <p>«Ответили сразу, быстро нашли человека, в течение часа за адекватную сумму мусор покинул наше ЖСК. Старшая по дому спит спокойно)) огромное спасибо!!!»</p>
-                    <strong>Ольга, вывоз мусора</strong>
-                </div>
-                <div class="review">
-                    <div class="stars">★★★★★</div>
-                    <p>«Купили 4-х комнатную квартиру полностью захламленную мусором и неделю пытались сами ее очистить, но все бесполезно, мусор как будто не убавлялся. Решили обратиться за помощью к данной компании, договорились о сумме, пожали руки и отдали ключи, на следующее утро в квартире даже пылинки не было, убрали все до последней крошки! Всем рекомендую, до сих пор под впечатлением от такой грамотной работы👍»</p>
-                    <strong>Елена, вывоз мусора</strong>
-                </div>
+                <div class="review"><div class="stars">★★★★★</div><p>«Сервис на высшем уровне, аккуратно, быстро, приехали вовремя и даже чуть раньше, однозначно пять заслуженных звёзд, рекомендую!»</p><strong>Катя, переезд</strong></div>
+                <div class="review"><div class="stars">★★★★★</div><p>«Хочу поблагодарить за погрузку машины при переезде! Звонила за 2 дня до дня погрузки, переживала, что не найду грузчиков. Очень вежливо со мной поговорили по телефону, заверили, что к назначенному времени команда будет! Всё очень оперативно! Парни пришли вовремя, аккуратные, вежливые, загрузили машину очень быстро и аккуратно, все вещи доехали в другой город целыми. Большое спасибо! Буду рекомендовать вашу компанию всем в Ульяновске!»</p><strong>Евгения, грузчики</strong></div>
+                <div class="review"><div class="stars">★★★★★</div><p>«Спасибо за качественный перевоз мебели! Отличные ребята - быстрые, вежливые, исполнительные! Всё вовремя!»</p><strong>Алена, переезд</strong></div>
+                <div class="review"><div class="stars">★★★★★</div><p>«Транспорт нам был нужен в кратчайшие сроки. Сразу договорились с водителем о времени. Водитель прибыл на место вовремя. Газель хорошая, вместительная. Абсолютно никаких претензий нет, большое вам спасибо.»</p><strong>Роман, перевозка мебели</strong></div>
+                <div class="review"><div class="stars">★★★★★</div><p>«Быстро договорились, пунктуальные ребята, отлично и быстро справились с работой, молодцы! Большое спасибо! Рекомендую 👍»</p><strong>Николай, грузчики</strong></div>
+                <div class="review"><div class="stars">★★★★★</div><p>«Очень качественно выполнена работа. Ребята просто молодцы. Подъехали точно по времени. Работали быстро, аккуратно. Вся мебель поместилась в одну машину. Будем рекомендовать всем знакомым»</p><strong>Александр, грузчики</strong></div>
+                <div class="review"><div class="stars">★★★★★</div><p>«Работа выполнена быстро и качественно! Договорились максимально быстро, все договоренности соблюдены!»</p><strong>Юлия, переезд</strong></div>
+                <div class="review"><div class="stars">★★★★★</div><p>«Спасибо. Нам понравилось. Мы остались довольны. Всё быстро аккуратно. Написала, сразу ответили, договорились, приехали даже чуть раньше, хорошо и быстро работали. В общем всё чётко. Буду обращаться еще!»</p><strong>Юрий, грузчики</strong></div>
+                <div class="review"><div class="stars">★★★★★</div><p>«Ответили сразу, быстро нашли человека, в течение часа за адекватную сумму мусор покинул наше ЖСК. Старшая по дому спит спокойно)) огромное спасибо!!!»</p><strong>Ольга, вывоз мусора</strong></div>
+                <div class="review"><div class="stars">★★★★★</div><p>«Купили 4-х комнатную квартиру полностью захламленную мусором и неделю пытались сами ее очистить, но все бесполезно, мусор как будто не убавлялся. Решили обратиться за помощью к данной компании, договорились о сумме, пожали руки и отдали ключи, на следующее утро в квартире даже пылинки не было, убрали все до последней крошки! Всем рекомендую, до сих пор под впечатлением от такой грамотной работы👍»</p><strong>Елена, вывоз мусора</strong></div>
             </div>
         </div>
     </section>

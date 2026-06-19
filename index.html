@@ -4,6 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>СуперГруз — грузчики, переезды, вывоз мусора в Ульяновске</title>
+    
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=110000045', 'ym');
+
+        ym(110000045, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/110000045" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -55,22 +70,9 @@
         }
         .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(11,29,58,0.85) 0%, rgba(11,29,58,0.4) 100%); }
         .hero .container { position: relative; z-index: 1; width: 100%; }
-        .hero-content { 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            gap: 40px; 
-            flex-wrap: wrap; 
-        }
+        .hero-content { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
         .hero-text { flex: 1 1 400px; }
-        .hero-image { 
-            flex: 1 1 500px; 
-            max-width: 600px; 
-            border-radius: 20px; 
-            overflow: hidden; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3); 
-            animation: float 6s ease-in-out infinite; 
-        }
+        .hero-image { flex: 1 1 500px; max-width: 600px; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.3); animation: float 6s ease-in-out infinite; }
         .hero-image img { width: 100%; height: auto; display: block; }
 
         @keyframes float {
@@ -80,7 +82,6 @@
         }
 
         .hero h1 { font-size: 3.5rem; color: var(--white); margin-bottom: 20px; }
-        .hero p { font-size: 1.25rem; margin-bottom: 30px; opacity: 0.9; }
         .discount-badge { background: var(--accent); padding: 10px 20px; border-radius: 30px; font-weight: 700; display: inline-block; margin-bottom: 20px; animation: pulse 2s infinite; }
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
